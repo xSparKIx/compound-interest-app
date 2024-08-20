@@ -18,7 +18,7 @@ interface DepositFormGroup {
 }
 
 /**
- * Элемент выпадающего списка "Период начисления процентов"
+ * Интерфейс элемента выпадающего списка "Период начисления процентов"
  */
 interface PercentFrequencyItem {
   readonly label: string;
