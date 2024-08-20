@@ -38,8 +38,24 @@
     </div>
 
     <div class="field col-12">
-      <p-checkbox formControlName="reinvest" label="Реинвестировать процент" [binary]="true"></p-checkbox>
+      <p-checkbox
+        formControlName="reinvest"
+        label="Реинвестировать процент"
+        [binary]="true"
+      ></p-checkbox>
     </div>
+
+    @if (form.value.reinvest) {
+      <div class="field col-12">
+        <label for="percentFrequency">Период реинвестирования (выплаты процентов)</label>
+        <p-dropdown
+          id="percentFrequency"
+          formControlName="percentFrequency"
+          styleClass="w-full"
+          [options]="percentFrequency"
+        ></p-dropdown>
+      </div>
+    }
 
     <p-button
       type="submit"
