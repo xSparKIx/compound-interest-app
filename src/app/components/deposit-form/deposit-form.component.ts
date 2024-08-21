@@ -28,7 +28,12 @@ interface PercentFrequencyItem {
 /**
  * Тип списка периодов начисления процентов
  */
-type PercentFrequencyItemList = [PercentFrequencyItem, PercentFrequencyItem, PercentFrequencyItem, PercentFrequencyItem];
+type PercentFrequencyItemList = [
+  PercentFrequencyItem,
+  PercentFrequencyItem,
+  PercentFrequencyItem,
+  PercentFrequencyItem,
+];
 
 /**
  * Компонент формы ввода информации о вкладе
