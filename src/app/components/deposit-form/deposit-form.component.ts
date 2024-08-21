@@ -26,6 +26,11 @@ interface PercentFrequencyItem {
 }
 
 /**
+ * Тип списка периодов начисления процентов
+ */
+type PercentFrequencyItemList = [PercentFrequencyItem, PercentFrequencyItem, PercentFrequencyItem, PercentFrequencyItem];
+
+/**
  * Компонент формы ввода информации о вкладе
  */
 @Component({
@@ -57,7 +62,7 @@ export class DepositFormComponent {
    * Период начисления процентов
    * @readonly
    */
-  public readonly percentFrequency: PercentFrequencyItem[] = [
+  public readonly percentFrequency: PercentFrequencyItemList = [
     {
       label: 'Каждый месяц',
       value: 12,
@@ -94,10 +99,13 @@ export class DepositFormComponent {
         nonNullable: true,
         validators: Validators.required,
       }),
-      percentFrequency: new FormControl<number>(12, {
-        nonNullable: true,
-        validators: Validators.required,
-      }),
+      percentFrequency: new FormControl<number>(
+        this.percentFrequency[0].value,
+        {
+          nonNullable: true,
+          validators: Validators.required,
+        },
+      ),
     });
   }
 
