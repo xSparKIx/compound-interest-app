@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -42,6 +42,11 @@ interface PercentFrequencyItem {
   styleUrl: './deposit-form.component.scss',
 })
 export class DepositFormComponent {
+  /**
+   * Эмиттер изменения сложного процента
+   */
+  @Output() private readonly ciChanged: EventEmitter<number> = new EventEmitter<number>();
+
   /**
    * Форма ввода информации о вкладе
    * @readonly
@@ -98,30 +103,31 @@ export class DepositFormComponent {
 
   /**
    * Метод события отправки формы
+   * @todo добавить сюда мемоизацию
    */
   public onFormSubmit(): void {
     const { amount, time, percent, reinvest, percentFrequency } = this.form.value;
 
     if (!amount) {
-      throw new Error('Передан пустой параметр "Начальная сумма вложений".')
+      throw new Error('Свойство "Начальная сумма вложений" пустое.')
     }
 
     if (!percent) {
-      throw new Error('Передан пустой параметр "Годовая процентная ставка".')
+      throw new Error('Свойство "Годовая процентная ставка" пустое.')
     }
 
     if (!time) {
-      throw new Error('Передан пустой параметр "Срок инвестиций в годах".')
+      throw new Error('Свойство "Срок инвестиций в годах" пустое.')
     }
 
     if (reinvest) {
       if (!percentFrequency) {
-        throw new Error('Передан пустой параметр "Количество периодов начисления процентов в год".')
+        throw new Error('Свойство "Количество периодов начисления процентов в год" пустое.')
       }
 
-      console.log(CompoundInterestService.calcCIWithReinvest(amount, percent, percentFrequency, time));
+      this.ciChanged.emit(CompoundInterestService.calcCIWithReinvest(amount, percent, percentFrequency, time));
     } else {
-      console.log(CompoundInterestService.calcCompoundInterest(amount, percent, time));
+      this.ciChanged.emit(CompoundInterestService.calcCompoundInterest(amount, percent, time));
     }
   }
 }
