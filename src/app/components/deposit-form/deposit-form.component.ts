@@ -55,7 +55,7 @@ export class DepositFormComponent {
   /**
    * Эмиттер изменения сложного процента
    */
-  @Output() private readonly ciChanged: EventEmitter<number> = new EventEmitter<number>();
+  @Output() private readonly ciChanged: EventEmitter<number[]> = new EventEmitter<number[]>();
 
   /**
    * Форма ввода информации о вкладе
@@ -138,9 +138,9 @@ export class DepositFormComponent {
         throw new Error('Свойство "Количество периодов начисления процентов в год" пустое.')
       }
 
-      this.ciChanged.emit(CompoundInterestService.calcCIWithReinvest(amount, percent, percentFrequency, time));
+      this.ciChanged.emit(CompoundInterestService.calcCIWithReinvestByYears(amount, percent, percentFrequency, time));
     } else {
-      this.ciChanged.emit(CompoundInterestService.calcCompoundInterest(amount, percent, time));
+      this.ciChanged.emit(CompoundInterestService.calcCompoundInterestByYears(amount, percent, time));
     }
   }
 }
