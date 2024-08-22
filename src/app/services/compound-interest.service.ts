@@ -1,9 +1,6 @@
-import { Injectable } from '@angular/core';
-
 /**
  * Сервис рассчета сложных процентов
  */
-@Injectable()
 export class CompoundInterestService {
   /**
    * Метод рассчета сложного процента без реинвестирования.
