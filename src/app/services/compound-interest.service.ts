@@ -34,7 +34,6 @@ export class CompoundInterestService {
    * @returns Массив рассчитанных по формуле сложных процентов за каждый год.
    * @todo Добавить побитовый вариант (возможно с bigint) и сравнить их
    * @todo Поправить тут валидацию либо убрать совсем
-   * @todo Подумать может переделать на решение в одну строку
    */
   public static calcCompoundInterestByYears(p: number, r: number, t: number): number[] {
     const percent = 1 + r/100;
@@ -86,7 +85,6 @@ export class CompoundInterestService {
    * @param n Количество периодов начисления процентов в год
    * @param t Срок инвестиций в годах
    * @returns Массив рассчитанных по формуле сложных процентов с учетом реинвестирования за каждый год.
-   * @todo Подумать может переделать на решение в одну строку
    */
   public static calcCIWithReinvestByYears(p: number, r: number, n: number, t: number): number[] {
     if (!n) {
