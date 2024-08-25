@@ -10,4 +10,21 @@ import { CompoundInterestChartComponent } from "./components/compound-interest-c
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {}
+export class AppComponent {
+  /**
+   * Массив рассчитанных по формуле сложных процентов
+   */
+  public compoundInterest: number[] = [];
+
+  /**
+   * Метод установки массива рассчитанных сложных процентов
+   */
+  public setCompoundInterest(compoundInterest: number[]): void {
+    if (!compoundInterest) {
+      this.compoundInterest = [];
+      return;
+    }
+
+    this.compoundInterest = compoundInterest;
+  }
+}

@@ -1,4 +1,4 @@
 <section id="main" role="main">
-  <app-deposit-form></app-deposit-form>
-  <app-compound-interest-chart></app-compound-interest-chart>
+  <app-deposit-form (compoundInterestChanged)="setCompoundInterest($event)"></app-deposit-form>
+  <app-compound-interest-chart [compoundInterest]="compoundInterest"></app-compound-interest-chart>
 </section>
