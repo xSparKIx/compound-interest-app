@@ -1,39 +1,14 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
+
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import DepositFormGroup from '../../interfaces/deposit-form-group.interface';
+import { PercentFrequencyItemList } from '../../interfaces/percent-frequency-item.interface';
 import { CompoundInterestService } from '../../services/compound-interest.service';
-
-/**
- * Интерфейс группы формы ввода информации о вкладе
- */
-interface DepositFormGroup {
-  amount: FormControl<number>;
-  time: FormControl<number>;
-  percent: FormControl<number>;
-  reinvest: FormControl<boolean>;
-  percentFrequency: FormControl<number>;
-}
-
-/**
- * Интерфейс элемента выпадающего списка "Период начисления процентов"
- */
-interface PercentFrequencyItem {
-  readonly label: string;
-  readonly value: number;
-}
-
-/**
- * Тип списка периодов начисления процентов
- */
-type PercentFrequencyItemList = [
-  PercentFrequencyItem,
-  PercentFrequencyItem,
-  PercentFrequencyItem,
-  PercentFrequencyItem,
-];
 
 /**
  * Компонент формы ввода информации о вкладе
