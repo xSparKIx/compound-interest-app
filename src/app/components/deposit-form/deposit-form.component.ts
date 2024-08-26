@@ -6,9 +6,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import DepositFormGroup from '../../interfaces/deposit-form-group.interface';
-import { PercentFrequencyItemList } from '../../interfaces/percent-frequency-item.interface';
-import { CompoundInterestService } from '../../services/compound-interest.service';
+import DepositFormGroup from '@interfaces/deposit-form-group.interface';
+import { PercentFrequencyItemList } from '@interfaces/percent-frequency-item.interface';
+import { CompoundInterestService } from '@services/compound-interest.service';
 
 /**
  * Компонент формы ввода информации о вкладе
